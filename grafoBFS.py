@@ -119,3 +119,28 @@ class Grafo:
                     cola.put(nodo_Siguiente)
                     #Agrega el siguiente como nodo visitado
                     nodo_visitado.add(nodo_Siguiente)
+
+#Main (Función principal de ejecución)
+if __name__ == "__main__":
+    #Instancia el objeto Grafo, agrega valores
+    g = Grafo(5, dirigido = False)
+
+    #Agrega las aristas del objeto grafo
+    g.agregar_Arista(0, 1)
+    g.agregar_Arista(0, 3)
+    g.agregar_Arista(1, 3)
+    g.agregar_Arista(4, 2)
+    g.agregar_Arista(4, 1)
+ 
+
+    #Imprime la lista de adyacencia 
+    g.imprimir_ListaAdj()
+
+    print("Se muestra el recorrido por BFS"
+          " (partiendo del vértice 0)")
+
+    #Imprime la lista de colas visitadas
+    g.busqueda_por_Amplitud(0)
+    print()
+    #Imprime la documentación del script
+    help(Grafo)
