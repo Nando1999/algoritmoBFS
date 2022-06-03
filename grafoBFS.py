@@ -84,3 +84,38 @@ class Grafo:
         for llave in self.m_lista_adyacencia.keys():
             # Imprime cada nodo que se encuentra en la lista de adyacencia
             print("Nodo", llave, ": ", self.m_lista_adyacencia[llave])
+ # Funcion de busqueda por amplitud o anchura
+    def busqueda_por_Amplitud(self, nodo_Inicio):
+        '''
+        En esta búsqueda parte desde de un nodo inicial y luego recorre a otros nodos en función de sus nodos adyacentes.
+        
+        Parámetros
+        ----------
+        nodo_Inicio: int
+            Nodo de inicio del grafo
+        '''
+        #Setea los nodos visitados
+        nodo_visitado = set()
+        #Inicializa la cola del grafo
+        cola = Queue()
+
+        #Agrega a la cola el nodo Inicio
+        cola.put(nodo_Inicio)
+        #Agrega el nodo inicio como nodo visitado
+        nodo_visitado.add(nodo_Inicio)
+
+        #Realiza un bucle while para ver que no este vacía la cola
+        while not cola.empty():
+            # Pone a la cola el nodo Actual
+            nodo_Actual = cola.get()
+            # Imprime en nodo Actual
+            print(nodo_Actual, end=" ")
+
+            #Recorre la lista de adyacencia para ver todos los nodos adyacentes
+            for (nodo_Siguiente, weight) in self.m_lista_adyacencia[nodo_Actual]:
+                #Condición: verifica si el nodo ha sido visitado debe agregar a la cola
+                if nodo_Siguiente not in nodo_visitado:
+                    #Agrega a la cola el siguiente nodo
+                    cola.put(nodo_Siguiente)
+                    #Agrega el siguiente como nodo visitado
+                    nodo_visitado.add(nodo_Siguiente)
